@@ -2,7 +2,8 @@
 const express = require('express');
 const path = require('path');
 const { readFile, writeFile } = require('fs/promises');
-const jsonDB = require('./db/db.json')
+const fs = require('fs');
+// const jsonDB = require('./db/db.json')
 
 // Specify PORT for express server
 const PORT = process.env.PORT || 3001;
@@ -32,7 +33,35 @@ app.get('/api/notes', (req, res) => {
 })
 
 
+app.post('/api/notes', (req, res) => {
+    console.log(req.body)    
 
+    const { title, text } = req.body;
+
+    if (req.body) {
+        const newNote = {
+            title,
+            text
+        };        
+        
+        readFile('./db/db.json', 'utf-8').then((data) => {
+            
+            // Create object from jason file
+            const parsedData = JSON.parse(data);
+            
+            parsedData.push(newNote);
+
+            // Write note to db file
+            fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
+                err ? console.error(err) : console.info(`\nData written to database.`)
+            );                       
+
+            res.status(200).json("Note added successfully");
+        }) 
+    } else {
+        res.json("Failed to add note.")
+    }
+})
 
 
 
