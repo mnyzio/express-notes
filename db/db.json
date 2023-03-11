@@ -10,9 +10,22 @@
     {
         "title": "my note",
         "text": "hello"
-    },   
+    },
     {
         "title": "my note",
         "text": "hello again"
+    },
+    {
+        "title": "Netflix",
+        "text": "my netflix"
+    },
+    {
+        "title": "notatka",
+        "text": "moja notatka"
+    },
+    {
+        "title": "Note with ID ",
+        "text": "some text",
+        "note_id": "570cff41-1720-45b2-b7f2-2944e3541a20"
     }
 ]

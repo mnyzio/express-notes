@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const { readFile, writeFile } = require('fs/promises');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 // const jsonDB = require('./db/db.json')
 
 // Specify PORT for express server
@@ -41,7 +42,9 @@ app.post('/api/notes', (req, res) => {
     if (req.body) {
         const newNote = {
             title,
-            text
+            text,
+            // Add unique id using uuid npm
+            note_id: uuidv4()
         };        
         
         readFile('./db/db.json', 'utf-8').then((data) => {
