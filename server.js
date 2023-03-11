@@ -1,6 +1,8 @@
 // Import express npm package
 const express = require('express');
 const path = require('path');
+const { readFile, writeFile } = require('fs/promises');
+const jsonDB = require('./db/db.json')
 
 // Specify PORT for express server
 const PORT = process.env.PORT || 3001;
@@ -18,6 +20,23 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 })
+
+// Get route for notes page
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/notes.html'))
+})
+
+
+app.get('/api/notes', (req, res) => {
+    readFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+})
+
+
+
+
+
+
+
 
 // Wildcard route 
 app.get('*', (req, res) => {
