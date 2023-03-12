@@ -1,11 +1,12 @@
-// Import express npm package
+// Import express.js
 const express = require('express');
 const path = require('path');
 const api = require('./routes/index.js');
 
-// Specify PORT for express server
+// Allow environment to assign a PORT or use specified PORT for express server
 const PORT = process.env.PORT || 3001;
 
+// Initialize an instance of Express.js
 const app = express();
 
 // Middleware for parsing JSON and urlencoded form data

@@ -11,18 +11,20 @@ notes.get('/api/notes', (req, res) => {
 
 // POST route for notes
 notes.post('/api/notes', (req, res) => {
-    console.log("Request body in notes.js line 17", req.body)
 
+    // Unpack key, value pairs from req.body
     const { title, text } = req.body;
-
+    
     if (req.body) {
+        // Craete new note as an object
         const newNote = {
             title,
             text,
-            // Add unique id using uuid npm
+            // Add unique id for each object using uuid npm
             id: uuidv4().slice(0, 8)
         };
 
+        // readFile that returns promise
         readFile('./db/db.json', 'utf-8').then((data) => {
 
             // Create object from jason file
@@ -46,18 +48,20 @@ notes.post('/api/notes', (req, res) => {
 notes.delete('/api/notes/:id', (req, res) => {
     // Assign ID passed as query parameter to variable
     const idToDelete = req.params.id;
-    console.log("🚀 ~ file: server.js:74 ~ app.delete ~ idToDelete:", idToDelete)
 
+    // Check to make sure note id was passed in query params
     if (idToDelete) {
+        // readFile that returns promise
         readFile('./db/db.json', 'utf-8').then((data) => {
             // Create object from jason file
             const parsedData = JSON.parse(data);
-            // console.log("🚀 ~ file: notes.js:58 ~ readFile ~ parsedData:", parsedData)
-
+            
+            // Loop through parsedData to find records with id passed in query             
             parsedData.forEach((element, index) => {
                 if (element.id === idToDelete) {
-
+                    // Remove one record at current index from array
                     parsedData.splice(index, 1);
+                    // Write new array of objects to db.json file as string
                     fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
                         err ? console.error(err) : console.info(`\nData written to db.json file.`)
                     );
