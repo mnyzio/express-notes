@@ -33,7 +33,7 @@ notes.post('/api/notes', (req, res) => {
             parsedData.push(newNote);
             // Write updated notes object to db file as string
             fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
-                err ? console.error(err) : console.info(`\nData written to db.json file.`)
+                err ? console.error(err) : console.info(`Data written to db.json file.`)
             );
             // Complete request by sending successful response 
             res.status(200).json("Note added successfully");            
@@ -63,10 +63,10 @@ notes.delete('/api/notes/:id', (req, res) => {
                     parsedData.splice(index, 1);
                     // Write new array of objects to db.json file as string
                     fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
-                        err ? console.error(err) : console.info(`\nData written to db.json file.`)
+                        err ? console.error(err) : console.info(`Note id: ${element.id} deleted successfully`)
                     );
                     // Complete request by sending successful response 
-                    res.status(200).json("Note deleted successfully");
+                    res.status(200).json(`Note id: ${element.id} deleted successfully`);
                 }
             });
         });

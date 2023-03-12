@@ -2,12 +2,16 @@
 const express = require('express');
 const path = require('path');
 const api = require('./routes/index.js');
+const { devLogs } = require('./middleware/devLogs');
 
 // Allow environment to assign a PORT or use specified PORT for express server
 const PORT = process.env.PORT || 3001;
 
 // Initialize an instance of Express.js
 const app = express();
+
+// Import custom middleware for dev purposes, "devLogs"
+app.use(devLogs);
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
