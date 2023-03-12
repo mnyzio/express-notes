@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "run": "node script.js",
-    "start": "nodemon script.js"
+    "run": "node server.js",
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
-  }
+  } 
 }
