@@ -14,6 +14,7 @@ App is utilizing JSON database file for keeping track of notes.
       - [Link to deployed website](#link-to-deployed-website)
       - [Link to GitHub repo](#link-to-github-repo)
   - [Usage](#usage)
+  - [Mock-up](#mock-up)
   - [Contributors](#contributors)
   - [License:](#license)
       - [MIT License](#mit-license)
@@ -37,6 +38,10 @@ the actual site previously saved notes are displayed (if any). From here user ca
 After providing title and content for the note a save button will be displayed for user to add new note to the collection.
 To display stored note details user simply needs to click on note title located on the left side on the page.
 Each note will show a delete button next to it's title for user to have ability to easily removed previously stored note.
+
+## Mock-up
+![Add a note](Assets/express-notes-01.png)
+![Expand note](Assets/express-notes-02.png)
 
 ## Contributors
 Mirek Nyzio
